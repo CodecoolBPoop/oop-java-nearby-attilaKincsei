@@ -19,23 +19,17 @@ public class ArraySlicer {
 		int EndIndex1 = yCoord;
 		int[] ArraySlice1 = Arrays.copyOfRange(SubArray, StartIndex1, EndIndex1);
 		
-		int StartIndex2 = Math.min(yCoord + 1, SubArray.length - 1);
-		int EndIndex2 = Math.min(yCoord + interval + 1, SubArray.length - 1);
+		int StartIndex2 = Math.min(yCoord + 1, SubArray.length);
+		int EndIndex2 = Math.min(yCoord + interval + 1, SubArray.length);
 		int[] ArraySlice2 = Arrays.copyOfRange(SubArray, StartIndex2, EndIndex2);
 
-		this.ArraySlice = new int[ArraySlice1.length + ArraySlice2.length];
+		// Concatenating two array slices with arraycopy() method:
+        int slice1Length = ArraySlice1.length;
+        int slice2Length = ArraySlice2.length;
+		this.ArraySlice = new int[slice1Length + slice2Length];
 
-		int index = 0;
-		
-		for (int number : ArraySlice1) {
-			this.ArraySlice[index] = number;
-			index++;
-		}
-		
-		for (int number : ArraySlice2) {
-			this.ArraySlice[index] = number;
-			index++;
-		}
+        System.arraycopy(ArraySlice1, 0, this.ArraySlice, 0, slice1Length);
+        System.arraycopy(ArraySlice2, 0, this.ArraySlice, slice1Length, slice2Length);
     }
 
 	public void PrintArraySlice() {
