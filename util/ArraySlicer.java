@@ -4,37 +4,36 @@ import java.util.Arrays;
 import java.lang.Math;
 
 public class ArraySlicer {
-	private int[][] TwoDArray;
+	private int[][] twoDArray;
 	
-	private int[] ArraySlice;
+	private int[] arraySlice;
 	
 	public ArraySlicer (int[][] ArrayParam) {
-		this.TwoDArray = ArrayParam;
+		this.twoDArray = ArrayParam;
 	}
 	
 	public void nearby(int xCoord, int yCoord, int interval) {
 		
-		int[] SubArray = this.TwoDArray[xCoord];
+		int[] SubArray = this.twoDArray[xCoord];
 		int StartIndex1 = yCoord - Math.min(interval, yCoord);
 		int EndIndex1 = yCoord;
-		int[] ArraySlice1 = Arrays.copyOfRange(SubArray, StartIndex1, EndIndex1);
+		int[] arraySlice1 = Arrays.copyOfRange(SubArray, StartIndex1, EndIndex1);
 		
 		int StartIndex2 = Math.min(yCoord + 1, SubArray.length);
 		int EndIndex2 = Math.min(yCoord + interval + 1, SubArray.length);
-		int[] ArraySlice2 = Arrays.copyOfRange(SubArray, StartIndex2, EndIndex2);
+		int[] arraySlice2 = Arrays.copyOfRange(SubArray, StartIndex2, EndIndex2);
 
 		// Concatenating two array slices with arraycopy() method:
-        int slice1Length = ArraySlice1.length;
-        int slice2Length = ArraySlice2.length;
-		this.ArraySlice = new int[slice1Length + slice2Length];
+        int slice1Length = arraySlice1.length;
+        int slice2Length = arraySlice2.length;
+		this.arraySlice = new int[slice1Length + slice2Length];
 
-        System.arraycopy(ArraySlice1, 0, this.ArraySlice, 0, slice1Length);
-        System.arraycopy(ArraySlice2, 0, this.ArraySlice, slice1Length, slice2Length);
+        System.arraycopy(arraySlice1, 0, this.arraySlice, 0, slice1Length);
+        System.arraycopy(arraySlice2, 0, this.arraySlice, slice1Length, slice2Length);
     }
 
-	public void PrintArraySlice() {
-		System.out.println(Arrays.toString(this.ArraySlice));
+	public void printArraySlice() {
+		System.out.println(Arrays.toString(this.arraySlice));
     }
-
 }
 
