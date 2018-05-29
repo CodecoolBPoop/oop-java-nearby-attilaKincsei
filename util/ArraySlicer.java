@@ -8,12 +8,15 @@ public class ArraySlicer {
 	
 	private int[] arraySlice;
 	
-	public ArraySlicer (int[][] ArrayParam) {
-		this.twoDArray = ArrayParam;
+	public ArraySlicer (int[][] arrayParam) {
+		this.twoDArray = arrayParam;
 	}
 	
-	public void nearby(int xCoord, int yCoord, int interval) {
-		
+	public void nearby(int[] inputArray) {
+		int xCoord = inputArray[0];
+		int yCoord = inputArray[1];
+		int interval = inputArray[2];
+
 		int[] SubArray = this.twoDArray[xCoord];
 		int StartIndex1 = yCoord - Math.min(interval, yCoord);
 		int EndIndex1 = yCoord;
