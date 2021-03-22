@@ -1,15 +1,15 @@
-package util;
+package com.codecool.nearby;
 
 import java.util.Scanner;
 import java.util.InputMismatchException;
 import java.lang.ArrayIndexOutOfBoundsException;
 
-public class ExceptionHandler {
+public class UserInput {
 	
-	private int[][] twoDimArray;
+	private int[][] initialArrayToSlice;
 
-	public ExceptionHandler (int[][] arrayParam) {
-		this.twoDimArray = arrayParam;
+	public UserInput (int[][] arrayParam) {
+		initialArrayToSlice = arrayParam;
 	}
 
 	public int[] userInput() {
@@ -31,12 +31,12 @@ public class ExceptionHandler {
 			boolean invalidInteger = true;
 			do {
 				try {
-					System.out.printf(inputMessages[i], inputKeys[i], this.twoDimArray[inputArray[0]].length - 1);
+					System.out.printf(inputMessages[i], inputKeys[i], initialArrayToSlice[inputArray[0]].length - 1);
 					Scanner inputScanner = new Scanner(System.in);
 					inputArray[i] = inputScanner.nextInt();
 					if (inputArray[i] >= 0) {
-						boolean conditionForX = (i == 0 && inputArray[0] < this.twoDimArray.length);
-						boolean conditionForY = (i == 1 && inputArray[1] < this.twoDimArray[inputArray[0]].length);
+						boolean conditionForX = (i == 0 && inputArray[0] < initialArrayToSlice.length);
+						boolean conditionForY = (i == 1 && inputArray[1] < initialArrayToSlice[inputArray[0]].length);
 						boolean conditionForInterval = (i == 2);
 						if (conditionForX || conditionForY || conditionForInterval) {
 							invalidInteger = false;	
