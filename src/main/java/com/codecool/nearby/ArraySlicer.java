@@ -1,4 +1,4 @@
-package util;
+package com.codecool.nearby;
 
 import java.util.Arrays;
 import java.lang.Math;
@@ -17,14 +17,14 @@ public class ArraySlicer {
 		int yCoord = inputArray[1];
 		int interval = inputArray[2];
 
-		int[] SubArray = this.twoDArray[xCoord];
-		int StartIndex1 = yCoord - Math.min(interval, yCoord);
-		int EndIndex1 = yCoord;
-		int[] arraySlice1 = Arrays.copyOfRange(SubArray, StartIndex1, EndIndex1);
+		int[] subArray = this.twoDArray[xCoord];
+		int startIndex1 = yCoord - Math.min(interval, yCoord);
+		int endIndex1 = yCoord;
+		int[] arraySlice1 = Arrays.copyOfRange(subArray, startIndex1, endIndex1);
 		
-		int StartIndex2 = Math.min(yCoord + 1, SubArray.length);
-		int EndIndex2 = Math.min(yCoord + interval + 1, SubArray.length);
-		int[] arraySlice2 = Arrays.copyOfRange(SubArray, StartIndex2, EndIndex2);
+		int startIndex2 = Math.min(yCoord + 1, subArray.length);
+		int endIndex2 = Math.min(yCoord + interval + 1, subArray.length);
+		int[] arraySlice2 = Arrays.copyOfRange(subArray, startIndex2, endIndex2);
 
 		// Concatenating two array slices with arraycopy() method:
         int slice1Length = arraySlice1.length;
